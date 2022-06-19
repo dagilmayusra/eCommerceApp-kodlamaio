@@ -1,0 +1,27 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="form-group my-3">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="firstName giriniz">
+            <div class="alert alert-danger" *ngIf="registerForm.get('firstName').hasError('required') && registerForm.get('firstName').dirty"> firstName zorunludur</div>
+        </div>
+        <div class="form-group my-3">
+            <label for="firstName">Last Name</label>
+            <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="fiyat giriniz">
+            <div class="alert alert-danger" *ngIf="registerForm.get('lastName').hasError('required') && registerForm.get('lastName').dirty"> lastName zorunludur</div>
+        </div>
+        <div class="form-group my-3">
+            <label for="firstName">Email</label>
+            <input type="email" id="email" formControlName="email" class="form-control" placeholder="email giriniz">
+            <div class="alert alert-danger" *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').dirty"> email zorunludur</div>
+        </div>
+        <div class="form-group my-3">
+            <label for="firstName">Password</label>
+            <input type="password" id="password" formControlName="password" class="form-control" placeholder="password giriniz">
+            <div class="alert alert-danger" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').dirty"> password zorunludur</div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Kayıt Ol</button>
+        <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+    </form>
+</div>

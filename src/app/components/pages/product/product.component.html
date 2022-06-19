@@ -1,0 +1,22 @@
+<span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText [(ngModel)]="filterText" placeholder="Search">         
+</span>
+
+<div class="row">
+    <div *ngFor="let product of products | filter: filterText" class="col d-flex flex-wrap m-2">
+        <p-card  header="{{ product.name }}" [style]="{'width': '15rem','height': '40rem', 'margin-bottom': '2em'}">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="https://www.pngitem.com/pimgs/m/450-4506052_food-in-shopping-basket-icon-hd-png-download.png">
+            </ng-template>
+            <p>{{product.name | uppercase}}</p>
+            <p>Stok: {{ product.unitsInStock }}</p>
+            <p>Price: {{ product.unitPrice | currency: 'USD' }}</p>
+            <p>Price: {{ product.unitPrice | vat:10 | currency:'USD' }}</p>
+            <button pButton type="button" label="Sil" class="p-button-danger" (click)="handleClick(product.id)"></button> 
+            <button pButton type="button" label="Güncelle" class="p-button-info" routerLink="/product-update/{{ product.id }}"></button> 
+            <button pButton type="button" label="ekleme" (click)="addToCart(product)" class="p-button-info" ></button> 
+        </p-card>
+    </div>
+    <div *ngIf="!(products | filter: filterText)?.length">No data</div>
+</div>

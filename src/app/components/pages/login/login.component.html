@@ -1,0 +1,19 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group my-3">
+            <label for="firstName">Email</label>
+            <input type="email" id="email" formControlName="email" class="form-control" placeholder="email giriniz">
+            <div class="alert alert-danger" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').dirty"> email zorunludur</div>
+        </div>
+        <div class="form-group my-3">
+            <label for="firstName">Password</label>
+            <input type="password" id="password" formControlName="password" class="form-control" placeholder="password giriniz">
+            <div class="alert alert-danger" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').dirty"> password zorunludur</div>
+        </div>
+        <div class="form-group m-3">
+            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+            <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+        </div>
+    </form>
+</div>
