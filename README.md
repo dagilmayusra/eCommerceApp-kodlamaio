@@ -1,4 +1,4 @@
-# E-commerce app
+# Shop App
 
 ## Home Page 
 
